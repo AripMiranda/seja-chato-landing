@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEJA CHATO | Ariana Miranda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET E BÁSICO --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: #050505; color: #ffffff; line-height: 1.6; overflow-x: hidden; }
+        
+        /* --- CONTAINER PRINCIPAL --- */
+        .main-container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+
+        /* --- SEÇÃO HERO (DOBRA 1) --- */
+        .hero { display: flex; align-items: center; justify-content: space-between; gap: 40px; margin-bottom: 80px; }
+        .hero-text { flex: 1; text-align: left; }
+        .tagline { background-color: #1a1a1a; color: #d4af37; padding: 8px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; display: inline-block; margin-bottom: 20px; border: 1px solid #d4af3733; }
+        .headline { color: #ffffff; font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 25px; text-transform: uppercase; }
+        .headline span { color: #d4af37; }
+        .subheadline { font-size: 1.15rem; margin-bottom: 35px; color: #aaaaaa; max-width: 500px; }
+        
+        .hero-image { flex: 1; text-align: right; position: relative; }
+        .hero-image img { max-width: 400px; width: 100%; height: auto; border-radius: 15px; box-shadow: 0 0 50px rgba(212, 175, 55, 0.25); border: 1px solid rgba(212, 175, 55, 0.1); transition: 0.3s; }
+        .hero-image img:hover { transform: translateY(-10px); }
+
+        /* --- SEÇÃO SOBRE (APRESENTAÇÃO) --- */
+        .about-section { 
+            display: flex; 
+            align-items: center; 
+            gap: 50px; 
+            background-color: #0a0a0a; 
+            padding: 60px 40px; 
+            border-radius: 20px; 
+            margin-bottom: 80px; 
+            border: 1px solid #1a1a1a;
+        }
+        .about-image { flex: 1; }
+        .about-image img { width: 100%; border-radius: 15px; border: 1px solid #d4af3733; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .about-text { flex: 1.5; }
+        .about-text h2 { color: #d4af37; font-size: 2rem; margin-bottom: 20px; text-transform: uppercase; }
+        .about-text p { color: #ccc; margin-bottom: 15px; font-size: 1.05rem; }
+
+        /* --- SEÇÃO PILARES --- */
+        .features { margin-bottom: 80px; }
+        .section-title { text-align: center; color: #d4af37; font-size: 2.2rem; text-transform: uppercase; margin-bottom: 50px; }
+        .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .feature-item { background-color: #121212; padding: 35px; border-radius: 15px; border: 1px solid #222; transition: 0.3s; position: relative; overflow: hidden; }
+        .feature-item:hover { border-color: #d4af37; transform: translateY(-5px); }
+        .feature-icon { font-size: 1.8rem; color: #d4af37; margin-bottom: 15px; display: inline-block; }
+        .feature-item h3 { color: #ffffff; font-size: 1.4rem; margin-bottom: 10px; text-transform: uppercase; }
+        .feature-item p { color: #999; font-size: 1rem; }
+
+        /* --- SEÇÃO DE AÇÃO (CTA FINAL) --- */
+        .cta-section { text-align: center; background-color: #121212; padding: 80px 40px; border-radius: 20px; border: 1px solid #222; position: relative; }
+        .cta-title { font-size: 2.5rem; color: #ffffff; margin-bottom: 20px; text-transform: uppercase; line-height: 1.2; }
+        .cta-title span { color: #d4af37; }
+        .cta-text { color: #aaaaaa; margin-bottom: 40px; max-width: 650px; margin-left: auto; margin-right: auto; font-size: 1.1rem; }
+
+        .cta-button { display: inline-block; background: linear-gradient(135deg, #d4af37 0%, #b5952f 100%); color: #000000; padding: 22px 50px; font-size: 1.4rem; font-weight: 800; text-decoration: none; border-radius: 60px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3); transition: 0.3s; position: relative; overflow: hidden; }
+        .cta-button::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: rgba(255, 255, 255, 0.2); transform: rotate(45deg); transition: 0.6s; }
+        .cta-button:hover::after { left: 120%; top: 120%; }
+        .cta-button:hover { transform: scale(1.05); }
+
+        .price-tag { margin-top: 25px; font-size: 1.2rem; color: #d4af37; font-weight: bold; }
+        .price-sub { font-size: 0.9rem; color: #666; }
+
+        /* --- RODAPÉ --- */
+        footer { text-align: center; margin-top: 80px; padding: 40px 0; border-top: 1px solid #222; color: #555; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 992px) {
+            .hero, .about-section { flex-direction: column-reverse; text-align: center; gap: 40px; }
+            .about-section { flex-direction: column; }
+            .hero-text, .about-text { text-align: center; }
+            .subheadline { margin: 0 auto 35px; }
+            .headline { font-size: 2.5rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .cta-title { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        
+        <section class="hero">
+            <div class="hero-text">
+                <div class="tagline">O Manual da Retomada de Controle</div>
+                <h1 class="headline">Pare de ser legal e assuma o <span>governo</span> da sua vida.</h1>
+                <p class="subheadline">O choque de realidade que você precisa para destruir as desculpas e organizar o seu caos espiritual, físico e profissional.</p>
+                <a href="https://pay.kiwify.com.br/ZGxlPiS" class="cta-button" target="_blank">QUERO ASSUMIR O CONTROLE</a>
+            </div>
+            <div class="hero-image">
+                <img src="{{ url_for('static', filename='capa.png') }}" alt="Capa do Livro Seja Chato">
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='perfil.jpg') }}" alt="Ariana Miranda">
+            </div>
+            <div class="about-text">
+                <h2>Quem é Ariana Miranda?</h2>
+                <p>Estrategista digital e entusiasta da alta performance, Ariana dedica sua jornada a ajudar pessoas a saírem da inércia através da disciplina inteligente.</p>
+                <p>Com vasta experiência em marketing e tecnologia, ela consolidou os pilares do governo pessoal no método <strong>Seja Chato</strong>, focando no que realmente gera resultado.</p>
+                <p>Sua missão é ensinar você a dominar sua rotina e seus impulsos, para que o seu propósito não seja mais refém das suas desculpas.</p>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2 class="section-title">Os 4 Pilares da Ordem:</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🙏</div>
+                    <h3>Espiritual</h3>
+                    <p>Onde o governo começa. Calando o barulho do mundo para ouvir a direção certa e inegociável.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💪</div>
+                    <h3>Saúde</h3>
+                    <p>Seu corpo é sua máquina de guerra. O suor é o aluguel diário para ter energia e clareza mental.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Crescimento</h3>
+                    <p>Maturidade absoluta. O fim da vitimização e o poder libertador de dizer NÃO para o que te atrasa.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💼</div>
+                    <h3>Profissional</h3>
+                    <p>Produtividade brutal. Aprenda a governar sua agenda e produzir em 4h o que a média faz em um dia.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2 class="cta-title">A vida média é <span>cara</span> demais.</h2>
+            <p class="cta-text">Acesso imediato ao E-book completo. O manual prático para quem cansou de ser morno e decidiu prosperar através da ordem.</p>
+            <a href="https://pay.kiwify.com.br/ZGxlPiS" class="cta-button" target="_blank">GARANTIR MEU ACESSO AGORA</a>
+            <p class="price-tag">Por apenas R$ 37,00</p>
+            <p class="price-sub">Pagamento único. Acesso vitalício.</p>
+        </section>
+
+        <footer>
+            <p>CONSTRUÍDO POR ARIANA MIRANDA &copy; 2026</p>
+        </footer>
+
+    </div>
+</body>
+</html>
